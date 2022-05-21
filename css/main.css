@@ -1,0 +1,108 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	--view: calc(1vw + 1vh);
+	--gap: 50px;
+	--side-short: 34;
+	--side-long: 44;
+	--deep: 4500px;
+	--move: .95s cubic-bezier(.095, .5, 0, 1)
+}
+
+
+@font-face {
+	font-family: raleway_c;
+	src: url(../fonts/raleway-v22-cyrillic-300.woff2);
+	font-weight: 300;
+}
+@font-face {
+	font-family: raleway_c;
+	src: url(../fonts/raleway-v22-cyrillic-100.woff2);
+	font-weight: 300;
+}
+
+body {
+	background-image: url(/img/fonn.JPG);
+	color: rgb(255, 255, 255);
+	font-size: calc(var(--view) * 1);
+	font-family: raleway_c, sans-serif;
+	line-height: 2;
+	height: var(--deep);
+	font-weight: 300;
+}
+.container {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	perspective: 3000px;
+}
+.album {
+	transform-style: preserve-3d;
+	height: 100%;
+}
+.shot {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--move), opacity 0.75s ease;
+	will-change: transform;
+	transform-style: preserve-3d;
+}
+h1, h2, h3, h4 {
+	text-shadow: 10px 10px 10px black  ;
+	font-weight: 300;
+	text-transform: uppercase;
+	width: min-content;
+	line-height: 1;
+}
+.shot h2 {
+	text-align: center;
+	font-size: calc(var(--view) * 3.5);
+}
+.shot-media {
+	position: relative;
+	width: calc(var(--view) * var(--side-short));
+	height: calc(var(--view) * var(--side-long));
+	background-position: center;
+	background-size: cover;
+}
+.shot-media_left {
+	right: calc(var(--side-short) / 2 * var(--view) + var(--gap));
+}
+.shot-media_right {
+	left: calc(var(--side-short) / 2 * var(--view) + var(--gap));
+}
+.shot_bg {
+	background-color: rgb(0 0 0 / .87);
+}
+video.shot-media {
+	width: calc(var(--view) * var(--side-long));
+	height: calc(var(--view) * var(--side-short));
+}
+video.shot-media_right {
+	left: calc(var(--side-long) / 2 * var(--view) + var(--gap));
+}
+video.shot-media_left {
+	right: calc(var(--side-long) / 2 * var(--view) + var(--gap));
+}
+.text-right > * {
+	position: relative;
+	left: 18vw;
+}
+.text-left > * {
+	position: relative;
+	right: 18vw;
+}
+.shot h3 {
+	font-size: calc(var(--view) * 3);
+}
+.shot p {
+	max-width: 30vw;
+	margin-top: 3vh;
+}
